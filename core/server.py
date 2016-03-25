@@ -1,3 +1,4 @@
+from .utils import get_template
 
 
 def application(environ, start_response):
@@ -7,9 +8,9 @@ def application(environ, start_response):
     :start_response -- a callback function supplied by the server which takes
                        the HTTP status and headers as arguments.
     """
-    message = b'li8 web framework'
     start_response('200 OK', [('Content-Type', 'text/html')])
-    return [message]
+    with open(get_template('default.html')) as template:
+        return [template.read().encode()]
 
 
 def not_found(environ, start_response):

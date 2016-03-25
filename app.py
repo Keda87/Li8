@@ -2,11 +2,11 @@ from __future__ import print_function
 from wsgiref.simple_server import make_server
 
 from core.server import application
-from core.middlewares import ErrorMiddleware
 
 
 if __name__ == '__main__':
-    application = ErrorMiddleware(app=application)
+    # Example to using middleware
+    # application = ErrorMiddleware(app=application)
 
     try:
         httpd = make_server('127.0.0.1', 8081, application)

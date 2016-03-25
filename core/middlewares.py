@@ -1,3 +1,4 @@
+from .utils import get_template
 
 
 class ErrorMiddleware(object):
@@ -8,4 +9,5 @@ class ErrorMiddleware(object):
     def __call__(self, environ, start_response):
         status = '500 INTERNAL SERVER ERROR'
         start_response(status, [('Content-Type', 'text/html')])
-        yield 'Unknown error occured'
+        with open(get_template('500.html')) as template:
+            yield template.read().encode()
