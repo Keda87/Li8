@@ -10,3 +10,9 @@ def application(environ, start_response):
     message = b'li8 web framework'
     start_response('200 OK', [('Content-Type', 'text/html')])
     return [message]
+
+
+def not_found(environ, start_response):
+    message = b'Page that you looking found was not found.'
+    start_response('404 NOT FOUND', [('Content-Type', 'text/html')])
+    return [message]
